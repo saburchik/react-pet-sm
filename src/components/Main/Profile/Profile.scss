@@ -1,0 +1,8 @@
+.profile {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    width: 100%;
+    grid-area: main;
+    background-color: cornflowerblue;
+}

@@ -1,0 +1,15 @@
+.App-header {
+    display: grid;
+    background-color: brown;
+    grid-area: header;
+
+    a {
+        height: 3em;
+        width: 3em;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

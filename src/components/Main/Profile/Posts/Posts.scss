@@ -1,0 +1,49 @@
+.posts__inner {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.posts__textarea {
+    display: grid;
+    gap: 1rem;
+    max-width: 35em;
+
+    textarea {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    button {
+        display: grid;
+        justify-self: end;
+        width: 5em;
+        height: fit-content;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 0.15rem solid #393939;
+        border-radius: 0.5em;
+        cursor: pointer;
+        padding: 0.25rem;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: aquamarine;
+        }
+    }
+}
+
+.posts__wrapper {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 0.5rem;
+
+    .post__item {
+        background-color: antiquewhite;
+        border: 0.25rem solid #393939;
+        border-radius: 0.5em;
+        width: 100%;
+        padding: 0.5rem;
+    }
+}
