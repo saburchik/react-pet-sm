@@ -1,7 +1,8 @@
 .App-aside {
     display: grid;
-    background-color: chartreuse;
+    background-color: #fff;
     grid-area: aside;
+    border: 1px solid #9c9c9c;
 
     ul {
         display: grid;

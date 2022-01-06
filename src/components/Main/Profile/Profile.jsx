@@ -2,7 +2,7 @@
 import './Profile.scss'
 // == Components:
 import Personal from './Personal/Personal'
-import Posts from './Posts/Posts'
+import Posts from './MyPosts/MyPosts'
 
 const Profile = () => {
     return (
