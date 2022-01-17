@@ -20,8 +20,9 @@
         color: #393939;
         transition: 0.2s;
 
+        &.active,
         &:hover {
-            color: brown;
+            color: #9c9c9c;
         }
     }
 }

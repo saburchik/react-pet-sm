@@ -6,10 +6,10 @@ import Posts from './MyPosts/MyPosts'
 
 const Profile = () => {
     return (
-        <main className='profile'>
+        <div className='profile'>
             <Personal />
             <Posts />
-        </main>
+        </div>
     )
 }
 

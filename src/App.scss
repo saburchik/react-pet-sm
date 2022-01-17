@@ -18,7 +18,7 @@ body {
   font-weight: 700;
 }
 
-.App {
+.app {
   max-width: 1200px;
   display: grid;
   grid-template-rows: auto 10fr 1fr;
@@ -29,4 +29,13 @@ body {
     "footer footer";
   gap: 1rem;
   margin: 0 auto;
+}
+
+.app__main {
+  display: grid;
+  grid-area: main;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border: 1px solid #9c9c9c;
 }

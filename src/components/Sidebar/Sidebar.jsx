@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './Sidebar.scss'
 
 const Sidebar = () => {
@@ -5,13 +6,13 @@ const Sidebar = () => {
         <aside className="App-aside">
             <ul>
                 <li>
-                    <a className='aside-link' href='/'>Profile</a>
+                    <NavLink className='aside-link' to='/'>Profile</NavLink>
+                </li>
+                <li>
+                    <NavLink className='aside-link' to='/dialogs'>Messages</NavLink>
                 </li>
                 <li>
                     <a className='aside-link' href='/'>Friends</a>
-                </li>
-                <li>
-                    <a className='aside-link' href='/'>Messages</a>
                 </li>
                 <li>
                     <a className='aside-link' href='/'>Bookmarks</a>

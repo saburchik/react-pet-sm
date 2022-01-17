@@ -12,8 +12,8 @@ const Posts = () => {
                 <button>Add post</button>
             </div>
             <aside className='posts__wrapper'>
-                <Post />
-                <Post />
+                <Post message='Hello! How are you man?' />
+                <Post message='Oh my god, who I looking at? I am fine bro' />
                 <Post />
             </aside>
         </article>
