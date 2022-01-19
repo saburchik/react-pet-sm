@@ -17,7 +17,7 @@ export default function App() {
       <main className='app__main'>
         <Routes>
           <Route path='/' element={<Profile />} />
-          <Route path='/dialogs' element={<Dialogs />} />
+          <Route path='/dialogs/*' element={<Dialogs />} />
         </Routes>
       </main>
       <Footer />
