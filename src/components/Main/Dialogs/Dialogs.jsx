@@ -1,8 +1,8 @@
-
-import { NavLink, Link } from 'react-router-dom'
-
 // == Styles:
 import './Dialogs.scss'
+// == Components:
+import Dialog from './Dialog/Dialog'
+import Message from './Message/Message'
 
 const Dialogs = (props) => {
     return (
@@ -12,36 +12,15 @@ const Dialogs = (props) => {
                 <section className='dialog__lists'>
                     <h3>Messaging</h3>
                     <ul className='list__items'>
-                        <li>
-                            <Link to='/dialogs/1'>
-                                <img src="https://avatars.mds.yandex.net/i?id=d230be33021eb46895399ad7c4569ead-5582363-images-thumbs&n=13" alt="photoUser" />
-                                <h4>Andrey</h4>
-                            </Link>
-                        </li>
-                        <li>
-                            <NavLink to='/dialogs/2'>
-                                <img src="https://avatars.mds.yandex.net/i?id=d230be33021eb46895399ad7c4569ead-5582363-images-thumbs&n=13" alt="photoUser" />
-                                <h4>Masha</h4>
-                            </NavLink>
-                        </li>
+                        <Dialog name='Andrey' id='1' />
+                        <Dialog name='Masha' id='2' />
+                        <Dialog name='David' id='3' />
                     </ul>
                 </section>
                 <div className='dialog__messages'>
                     <ul className='message__items'>
-                        <li>
-                            <img src="https://avatars.mds.yandex.net/i?id=d230be33021eb46895399ad7c4569ead-5582363-images-thumbs&n=13" alt="photoUser" />
-                            <div className='message__wrapper'>
-                                <h4>Andrey</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, inventore.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="https://avatars.mds.yandex.net/i?id=d230be33021eb46895399ad7c4569ead-5582363-images-thumbs&n=13" alt="photoUser" />
-                            <div className='message__wrapper'>
-                                <h4>Me</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, inventore.</p>
-                            </div>
-                        </li>
+                        <Message name='Me' id='11' message='Hello, how are you?' />
+                        <Message name='David' id='3' message='lorem somethin text about blah-blah' />
                     </ul>
                     <div className='message__sends'>
                         <textarea className='message__textarea' placeholder='Write a message...' />
