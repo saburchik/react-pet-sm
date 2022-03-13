@@ -4,20 +4,8 @@ import './Dialogs.scss'
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 
-const Dialogs = (props) => {
-
-    const dialogs = [
-        { id: 1, name: 'Andrey' },
-        { id: 3, name: 'Masha' },
-        { id: 4, name: 'David' }
-    ]
-    const messages = [
-        { id: 1, message: 'Hello, how are you?' },
-        { id: 4, message: 'lorem somethin text about blah-blah' }
-    ]
-
-    const dialogsDraw = dialogs.map(dia => <Dialog name={dia.name} id={dia.id} />)
-    const messagesDraw = messages.map(mes => <Message name={mes.name} id={mes.id} message={mes.message} />)
+const Dialogs = ({ data }) => {
+    const state = data.DialogsPage
 
     return (
         <section className='dialogs'>
@@ -26,12 +14,16 @@ const Dialogs = (props) => {
                 <section className='dialog__lists'>
                     <h3>Messaging</h3>
                     <ul className='list__items'>
-                        {dialogsDraw}
+                        {
+                            state.dialogs.map(d => <Dialog id={d.id} name={d.name} />)
+                        }
                     </ul>
                 </section>
                 <div className='dialog__messages'>
                     <ul className='message__items'>
-                        {messagesDraw}
+                        {
+                            state.messages.map(m => <Message id={m.id} name={m.name} message={m.message} />)
+                        }
                     </ul>
                     <div className='message__sends'>
                         <textarea className='message__textarea' placeholder='Write a message...' />

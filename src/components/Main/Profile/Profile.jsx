@@ -2,13 +2,13 @@
 import './Profile.scss'
 // == Components:
 import Personal from './Personal/Personal'
-import Posts from './MyPosts/MyPosts'
+import MyPosts from './MyPosts/MyPosts'
 
-const Profile = () => {
+const Profile = ({ data }) => {
     return (
         <div className='profile'>
             <Personal />
-            <Posts />
+            <MyPosts data={data} />
         </div>
     )
 }

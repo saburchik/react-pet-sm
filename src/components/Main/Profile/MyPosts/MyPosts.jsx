@@ -3,15 +3,8 @@ import './MyPosts.scss'
 // == Components:
 import Post from './Post/Post'
 
-const Posts = () => {
-
-    const posts = [
-        { id: 1, message: 'Hello! How are you man?' },
-        { id: 2, message: 'Oh my god, who I looking at? I am fine bro' },
-        { id: 3, message: '' }
-    ]
-
-    const postsDraw = posts.map(pos => <Post id={pos.id} message={pos.message} />)
+const Posts = ({ data }) => {
+    const state = data.ProfilePage
 
     return (
         <article className='posts__inner'>
@@ -21,7 +14,9 @@ const Posts = () => {
                 <button>Add post</button>
             </div>
             <aside className='posts__wrapper'>
-                {postsDraw}
+                {
+                    state.posts.map(pos => <Post id={pos.id} message={pos.message} />)
+                }
             </aside>
         </article>
     )
