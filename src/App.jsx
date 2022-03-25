@@ -14,7 +14,7 @@ export default function App({ data }) {
   return (
     <div className="app">
       <Header />
-      <Sidebar />
+      <Sidebar data={data} />
       <main className='app__main'>
         <Routes>
           <Route path='/' element={<Profile data={data} />} />

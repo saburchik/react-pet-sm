@@ -24,8 +24,9 @@ a {
 
 .app {
   max-width: 1200px;
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 10fr 1fr;
+  grid-template-rows: auto 10fr auto;
   grid-template-columns: 1fr 5fr;
   grid-template-areas:
     "header header"
