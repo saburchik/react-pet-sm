@@ -1,4 +1,7 @@
-import { renderEntireTree } from "../render"
+let render
+export const subscribe = (observer) => {
+    render = observer
+}
 
 const state = {
     DialogsPage: {
@@ -13,6 +16,7 @@ const state = {
         ]
     },
     ProfilePage: {
+        postState: 'Saburchik',
         posts: [
             { id: 1, message: 'Hello! How are you man?' },
             { id: 2, message: 'Oh my god, who I looking at? I am fine bro' },
@@ -28,14 +32,21 @@ const state = {
     }
 }
 
-export const addPost = (postMessage) => {
-    debugger
+window.state = state
+
+export const addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.ProfilePage.postState,
     }
     state.ProfilePage.posts.push(newPost)
-    renderEntireTree(state)
+    state.ProfilePage.postState = ''
+    render()
+}
+
+export const updatePostText = (newText) => {
+    state.ProfilePage.postState = newText
+    render()
 }
 
 export default state

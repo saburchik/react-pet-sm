@@ -9,7 +9,7 @@ import Profile from './components/Main/Profile/Profile'
 import Dialogs from './components/Main/Dialogs/Dialogs'
 import Footer from './components/Footer/Footer'
 
-export default function App({ data, addPost }) {
+export default function App({ data, addPost, updatePostText }) {
 
   return (
     <div className="app">
@@ -17,7 +17,7 @@ export default function App({ data, addPost }) {
       <Sidebar data={data} />
       <main className='app__main'>
         <Routes>
-          <Route path='/' element={<Profile data={data} addPost={addPost} />} />
+          <Route path='/' element={<Profile data={data} addPost={addPost} updatePostText={updatePostText} />} />
           <Route path='/dialogs/*' element={<Dialogs data={data} />} />
         </Routes>
       </main>
