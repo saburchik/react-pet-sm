@@ -4,11 +4,11 @@ import './Profile.scss'
 import Personal from './Personal/Personal'
 import MyPosts from './MyPosts/MyPosts'
 
-const Profile = ({ data }) => {
+const Profile = ({ data, addPost }) => {
     return (
         <div className='profile'>
             <Personal />
-            <MyPosts data={data} />
+            <MyPosts data={data} addPost={addPost} />
         </div>
     )
 }

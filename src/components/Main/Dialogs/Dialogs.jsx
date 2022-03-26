@@ -1,3 +1,5 @@
+// == Base:
+import React from 'react'
 // == Styles:
 import './Dialogs.scss'
 // == Components:
@@ -6,6 +8,14 @@ import Message from './Message/Message'
 
 const Dialogs = ({ data }) => {
     const state = data.DialogsPage
+
+    const createNewMessage = React.createRef()
+
+    const onAddMessage = () => {
+        let text = createNewMessage.current.value
+
+        alert(text)
+    }
 
     return (
         <section className='dialogs'>
@@ -26,8 +36,8 @@ const Dialogs = ({ data }) => {
                         }
                     </ul>
                     <div className='message__sends'>
-                        <textarea className='message__textarea' placeholder='Write a message...' />
-                        <button>Send</button>
+                        <textarea className='message__textarea' ref={createNewMessage} placeholder=' Write a message...' />
+                        <button onClick={onAddMessage}>Send</button>
                     </div>
                 </div>
             </div>

@@ -5,14 +5,16 @@ import './MyPosts.scss'
 // == Components:
 import Post from './Post/Post'
 
-const Posts = ({ data }) => {
+const MyPosts = ({ data, addPost }) => {
     const state = data.ProfilePage
 
     let newPostEl = React.createRef()
 
     const onAddPost = () => {
+        debugger
         let text = newPostEl.current.value
-        alert(text)
+        addPost(text)
+        newPostEl.current.value = ''
     }
 
     return (
@@ -31,4 +33,4 @@ const Posts = ({ data }) => {
     )
 }
 
-export default Posts
+export default MyPosts

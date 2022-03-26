@@ -1,3 +1,5 @@
+import { renderEntireTree } from "../render"
+
 const state = {
     DialogsPage: {
         dialogs: [
@@ -24,6 +26,16 @@ const state = {
             { id: 3, name: 'Michael', avatar: 'https://avatars.mds.yandex.net/i?id=f53c6a9ba8f260f35ff6d22aa5b9e0c5-5652653-images-thumbs&n=13' }
         ]
     }
+}
+
+export const addPost = (postMessage) => {
+    debugger
+    let newPost = {
+        id: 5,
+        message: postMessage,
+    }
+    state.ProfilePage.posts.push(newPost)
+    renderEntireTree(state)
 }
 
 export default state
