@@ -5,19 +5,20 @@ import './MyPosts.scss'
 // == Components:
 import Post from './Post/Post'
 
-const MyPosts = ({ data, addPost, updatePostText }) => {
-    const state = data.ProfilePage
-    const postState = data.ProfilePage.postState
+const MyPosts = ({ store }) => {
+    const state = store.getState().ProfilePage
+    const postState = store.getState().ProfilePage.postState
 
     let newPostEl = React.createRef()
 
     const changeText = () => {
         let text = newPostEl.current.value
-        updatePostText(text)
+        store.dispatch({ type: 'UPDATE-POST-TEXT', newText: text }) // updatePostText(text)
     }
 
     const onAddPost = () => {
-        addPost()
+
+        store.dispatch({ type: 'ADD-POST' }) // addPost()
     }
 
     return (
@@ -29,7 +30,7 @@ const MyPosts = ({ data, addPost, updatePostText }) => {
             </div>
             <aside className='posts__wrapper'>
                 {
-                    state.posts.map(pos => <Post id={pos.id} message={pos.message} />)
+                    state.posts.map(pos => <Post key={pos.id} id={pos.id} message={pos.message} />)
                 }
             </aside>
         </article>

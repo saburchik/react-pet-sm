@@ -9,16 +9,16 @@ import Profile from './components/Main/Profile/Profile'
 import Dialogs from './components/Main/Dialogs/Dialogs'
 import Footer from './components/Footer/Footer'
 
-export default function App({ data, addPost, updatePostText }) {
+export default function App({ store }) {
 
   return (
     <div className="app">
       <Header />
-      <Sidebar data={data} />
+      <Sidebar store={store} />
       <main className='app__main'>
         <Routes>
-          <Route path='/' element={<Profile data={data} addPost={addPost} updatePostText={updatePostText} />} />
-          <Route path='/dialogs/*' element={<Dialogs data={data} />} />
+          <Route path='/' element={<Profile store={store} />} />
+          <Route path='/dialogs/*' element={<Dialogs store={store} />} />
         </Routes>
       </main>
       <Footer />

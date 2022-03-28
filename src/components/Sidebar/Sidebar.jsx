@@ -1,8 +1,8 @@
 import { NavLink, Link } from 'react-router-dom'
 import './Sidebar.scss'
 
-const Sidebar = (props) => {
-    const friends = props.data.Sidebar.friends
+const Sidebar = ({ store }) => {
+    const friends = store.getState().Sidebar.friends
 
     return (
         <aside className="App-aside">

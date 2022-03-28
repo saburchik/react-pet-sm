@@ -6,8 +6,8 @@ import './Dialogs.scss'
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 
-const Dialogs = ({ data }) => {
-    const state = data.DialogsPage
+const Dialogs = ({ store }) => {
+    const state = store.DialogsPage
 
     const createNewMessage = React.createRef()
 

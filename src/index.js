@@ -2,8 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
-import { subscribe, addPost, updatePostText } from './redux/state'
-import state from './redux/state'
+import store from './redux/store'
 // == Components:
 import App from './App'
 
@@ -11,11 +10,11 @@ import App from './App'
 const renderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
-      <App data={state} addPost={addPost} updatePostText={updatePostText} />
+      <App store={store} />
     </BrowserRouter>,
     document.getElementById('root')
   )
 }
-renderEntireTree(state)
+renderEntireTree(store)
 
-subscribe(renderEntireTree)
+store.subscribe(renderEntireTree)
