@@ -1,0 +1,4 @@
+export const ADD_POST = 'ADD-POST'
+export const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
+export const ADD_MESSAGE = 'ADD-MESSAGE'
+export const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'

@@ -1,5 +1,6 @@
 // == Base:
 import React from 'react'
+import { updateActionChange, addPostActionCreate } from '../../../../redux/reducers/profile-reducer'
 // == Styles:
 import './MyPosts.scss'
 // == Components:
@@ -13,12 +14,12 @@ const MyPosts = ({ store }) => {
 
     const changeText = () => {
         let text = newPostEl.current.value
-        store.dispatch({ type: 'UPDATE-POST-TEXT', newText: text }) // updatePostText(text)
+        let action = updateActionChange(text)
+        store.dispatch(action)
     }
 
     const onAddPost = () => {
-
-        store.dispatch({ type: 'ADD-POST' }) // addPost()
+        store.dispatch(addPostActionCreate())
     }
 
     return (

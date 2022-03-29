@@ -1,3 +1,6 @@
+import profileReducer from "./reducers/profile-reducer"
+import dialogsReducer from './reducers/dialogs-reducer'
+
 const store = {
     _state: {
         DialogsPage: {
@@ -6,6 +9,7 @@ const store = {
                 { id: 3, name: 'Masha' },
                 { id: 4, name: 'David' }
             ],
+            messageState: 'Enter a text',
             messages: [
                 { id: 1, message: 'Hello, how are you?' },
                 { id: 4, message: 'lorem somethin text about blah-blah' }
@@ -38,18 +42,9 @@ const store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.ProfilePage.postState,
-            }
-            this._state.ProfilePage.posts.push(newPost)
-            this._state.ProfilePage.postState = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-POST-TEXT') {
-            this._state.ProfilePage.postState = action.newText
-            this._callSubscriber(this._state)
-        }
+        this._state.ProfilePage = profileReducer(this._state.ProfilePage, action)
+        this._state.DialogsPage = dialogsReducer(this._state.DialogsPage, action)
+        this._callSubscriber(this._state)
     }
 }
 
