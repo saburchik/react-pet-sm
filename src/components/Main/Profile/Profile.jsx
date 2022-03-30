@@ -2,13 +2,13 @@
 import './Profile.scss'
 // == Components:
 import Personal from './Personal/Personal'
-import MyPosts from './MyPosts/MyPosts'
+import MyPostsContainer from './MyPosts/MyPostsContainer'
 
 const Profile = ({ store }) => {
     return (
         <div className='profile'>
             <Personal />
-            <MyPosts store={store} />
+            <MyPostsContainer store={store} />
         </div>
     )
 }
