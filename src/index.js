@@ -3,18 +3,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
 import store from './redux/redux-store'
+import { Provider } from 'react-redux'
 // == Components:
 import App from './App'
 
-
-const renderEntireTree = () => {
-  ReactDOM.render(
+ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
-      <App store={store} />
-    </BrowserRouter>,
-    document.getElementById('root')
-  )
-}
-renderEntireTree(store)
-
-store.subscribe(renderEntireTree)
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+)

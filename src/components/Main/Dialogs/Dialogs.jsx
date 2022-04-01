@@ -1,26 +1,21 @@
 // == Base:
 import React from 'react'
-import { updateMessageActionChange, addMessageActionCreate } from '../../../redux/reducers/dialogs-reducer'
 // == Styles:
 import './Dialogs.scss'
 // == Components:
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 
-const Dialogs = ({ store }) => {
-    const state = store.getState().DialogsPage
-    const messageState = store.getState().DialogsPage.messageState
-
-    const createNewMessage = React.createRef()
+const Dialogs = ({ state, defaultValue, updateText, addMessage }) => {
+    const createMessage = React.createRef()
 
     const onAddMessage = () => {
-        store.dispatch(addMessageActionCreate())
+        addMessage()
     }
 
-    const changeMessateText = () => {
-        let text = createNewMessage.current.value
-        let action = updateMessageActionChange(text)
-        store.dispatch(action)
+    const onUpdateText = () => {
+        let text = createMessage.current.value
+        updateText(text)
     }
 
     return (
@@ -42,7 +37,7 @@ const Dialogs = ({ store }) => {
                         }
                     </ul>
                     <div className='message__sends'>
-                        <textarea className='message__textarea' value={messageState} ref={createNewMessage} onChange={changeMessateText} />
+                        <textarea className='message__textarea' value={defaultValue} ref={createMessage} onChange={onUpdateText} />
                         <button onClick={onAddMessage}>Send</button>
                     </div>
                 </div>

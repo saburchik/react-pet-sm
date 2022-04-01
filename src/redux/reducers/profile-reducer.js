@@ -2,7 +2,7 @@ const ADD_POST = 'ADD-POST'
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 
 const data = {
-    postState: 'Saburchik',
+    defaultValue: 'Saburchik',
     posts: [
         { id: 1, message: 'Hello! How are you man?' },
         { id: 2, message: 'Oh my god, who I looking at? I am fine bro' },
@@ -11,19 +11,18 @@ const data = {
 }
 
 const profileReducer = (state = data, action) => {
-
     switch (action.type) {
         case ADD_POST:
-            let newPost = {
-                id: 5,
-                message: state.postState,
+            return {
+                ...state,
+                posts: [...state.posts, { id: 5, message: state.defaultValue }],
+                defaultValue: '',
             }
-            state.posts.push(newPost)
-            state.postState = ''
-            return state
         case UPDATE_POST_TEXT:
-            state.postState = action.newText
-            return state
+            return {
+                ...state,
+                defaultValue: action.newText
+            }
         default:
             return state
     }

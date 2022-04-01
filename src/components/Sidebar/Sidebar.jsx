@@ -1,8 +1,7 @@
 import { NavLink, Link } from 'react-router-dom'
 import './Sidebar.scss'
 
-const Sidebar = ({ store }) => {
-    const friends = store.getState().Sidebar.friends
+const Sidebar = ({ friends }) => {
 
     return (
         <aside className="App-aside">
@@ -20,20 +19,19 @@ const Sidebar = ({ store }) => {
                     <a className='aside-link' href='/'>Bookmarks</a>
                 </li>
                 <li>
-                    <a className='aside-link' href='/'>Music</a></li>
+                    <NavLink className='aside-link' to='/users'>Find Users</NavLink>
+                </li>
                 <li>
                     <a className='aside-link' href='/'>Settings</a>
                 </li>
             </ul>
             <ul className='sidebar-friends'>
-                {
-                    friends.map(data => <li key={data.id}>
-                        <Link to='/'>
-                            <img src={data.avatar} alt="avatar" />
-                            <h4>{data.name}</h4>
-                        </Link>
-                    </li>)
-                }
+                {friends.map(data => <li key={data.id}>
+                    <Link to='/'>
+                        <img src={data.avatar} alt="avatar" />
+                        <h4>{data.name}</h4>
+                    </Link>
+                </li>)}
             </ul>
         </aside>
     )
