@@ -7,7 +7,7 @@ import './App.scss'
 import Header from './components/Header/Heade'
 import SidebarContainer from './components/Sidebar/SidebarContainer'
 import Profile from './components/Main/Profile/Profile'
-import Users from './components/Main/Users/Users'
+import UsersContainer from './components/Main/Users/UsersContainer'
 import DialogsContainer from './components/Main/Dialogs/DialogsContainer'
 import Footer from './components/Footer/Footer'
 
@@ -21,7 +21,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Profile />} />
           <Route path='/dialogs/*' element={<DialogsContainer />} />
-          <Route path='/users' element={<Users />} />
+          <Route path='/users' element={<UsersContainer />} />
         </Routes>
       </main>
       <Footer />

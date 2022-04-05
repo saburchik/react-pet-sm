@@ -1,0 +1,30 @@
+.users {
+    padding: 1rem;
+}
+.users__items {
+    display: grid;
+    gap: 1rem;
+}
+.user__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    border: 1px solid grey;
+    padding: 1rem;
+
+
+    .user__photo {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 0.5rem;
+
+        img {
+            object-fit: cover;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+        }
+    }
+}
