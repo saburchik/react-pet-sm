@@ -4,10 +4,10 @@ import './Profile.scss'
 import Personal from './Personal/Personal'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 
-const Profile = () => {
+const Profile = ({ profile }) => {
     return (
         <div className='profile'>
-            <Personal />
+            <Personal profile={profile} />
             <MyPostsContainer />
         </div>
     )

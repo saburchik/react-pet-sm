@@ -1,9 +1,10 @@
 // == Base:
 import React from "react"
+import { Link } from 'react-router-dom'
 // == Styles:
 import './Users.scss'
 
-const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users, isFetching }) => {
+const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users }) => {
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
@@ -11,8 +12,6 @@ const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPag
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
-    console.log(isFetching);
 
     return (
         <div className="users">
@@ -31,10 +30,13 @@ const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPag
                     return (
                         <li className="user__item" key={u.id}>
                             <div className="user__photo">
-                                <img src={
-                                    u.photos.large !== null
-                                        ? u.photos.large
-                                        : 'https://avatars.mds.yandex.net/i?id=3bdd061bff68b2ae3e738956432bb77b-2399446-images-thumbs&n=13&exp=1'} alt="" />
+                                <Link to={'/' + u.id}>
+                                    <img src={
+                                        u.photos.large !== null
+                                            ? u.photos.large
+                                            : 'https://avatars.mds.yandex.net/i?id=3bdd061bff68b2ae3e738956432bb77b-2399446-images-thumbs&n=13&exp=1'} alt=""
+                                    />
+                                </Link>
                                 {
                                     u.followed
                                         ? <button onClick={() => unfollow(u.id)}>Unfollow</button>
