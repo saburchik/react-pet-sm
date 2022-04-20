@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import './Users.scss'
 
 const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users }) => {
-
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
 
@@ -30,7 +29,7 @@ const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPag
                     return (
                         <li className="user__item" key={u.id}>
                             <div className="user__photo">
-                                <Link to={'/' + u.id}>
+                                <Link to={'/profile/' + u.id}>
                                     <img src={
                                         u.photos.large !== null
                                             ? u.photos.large

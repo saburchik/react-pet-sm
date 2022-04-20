@@ -1,10 +1,12 @@
 .App-header {
     display: grid;
+    grid-auto-flow: column;
     background-color: #fff;
     grid-area: header;
     border: 1px solid #9c9c9c;
+    padding: 0 1rem;
 
-    a {
+    .header__logo {
         height: 3em;
         width: 3em;
 
@@ -12,5 +14,12 @@
             height: 100%;
             width: 100%;
         }
+    }
+
+    .header__login {
+        display: grid;
+        justify-self: end;
+        align-content: center;
+        width: fit-content;
     }
 }

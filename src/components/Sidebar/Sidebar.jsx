@@ -7,7 +7,7 @@ const Sidebar = ({ friends }) => {
         <aside className="App-aside">
             <ul className='sidebar-links'>
                 <li>
-                    <NavLink className='aside-link' to='/'>Profile</NavLink>
+                    <NavLink className='aside-link' to='/profile'>Profile</NavLink>
                 </li>
                 <li>
                     <NavLink className='aside-link' to='/dialogs'>Messages</NavLink>
