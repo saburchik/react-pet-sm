@@ -1,11 +1,11 @@
 // == Base:
 import React from "react"
 import { Link } from 'react-router-dom'
-import * as axios from "axios"
+import { usersAPI } from '../../../api/api'
 // == Styles:
 import './Users.scss'
 
-const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users }) => {
+const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users, followingInProgress, toggleFollowingProgress }) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
 
@@ -37,36 +37,24 @@ const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPag
                                             : 'https://avatars.mds.yandex.net/i?id=3bdd061bff68b2ae3e738956432bb77b-2399446-images-thumbs&n=13&exp=1'} alt=""
                                     />
                                 </Link>
-                                {
-                                    u.followed
-                                        ? <button onClick={() => {
-                                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": ''
-                                                }
+                                {u.followed ?
+                                    <button onClick={() => {
+                                        toggleFollowingProgress(true, u.id)
+                                        usersAPI.setUnfollow(u.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) { unfollow(u.id) }
+                                                toggleFollowingProgress(false, u.id)
                                             })
-                                                .then(res => {
-                                                    if (res.data.resultCode === 0) {
-                                                        unfollow(u.id)
-                                                    }
-                                                })
-
-                                        }}>Unfollow</button>
-                                        : <button onClick={() => {
-                                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": ''
-                                                }
+                                    }} disabled={followingInProgress.some(id => id === u.id)}>Unfollow</button>
+                                    :
+                                    <button onClick={() => {
+                                        toggleFollowingProgress(true, u.id)
+                                        usersAPI.setFollow(u.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) { follow(u.id) }
+                                                toggleFollowingProgress(false, u.id)
                                             })
-                                                .then(res => {
-                                                    if (res.data.resultCode === 0) {
-                                                        follow(u.id)
-                                                    }
-                                                })
-                                        }}>Follow</button>
-                                }
+                                    }} disabled={followingInProgress.some(id => id === u.id)}>Follow</button>}
                             </div>
                             <div className="user__info">
                                 <p className="user__info-name">{u.name}</p>
