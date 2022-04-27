@@ -1,11 +1,10 @@
 // == Base:
 import React from "react"
 import { Link } from 'react-router-dom'
-import { usersAPI } from '../../../api/api'
 // == Styles:
 import './Users.scss'
 
-const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPageChanged, users, followingInProgress, toggleFollowingProgress }) => {
+const Users = ({ totalUsersCount, pageSize, currentPage, followThunk, unFollowThunk, onPageChanged, users, followingInProgress, toggleFollowingProgress }) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
 
@@ -40,20 +39,22 @@ const Users = ({ totalUsersCount, pageSize, currentPage, follow, unfollow, onPag
                                 {u.followed ?
                                     <button onClick={() => {
                                         toggleFollowingProgress(true, u.id)
-                                        usersAPI.setUnfollow(u.id)
-                                            .then(data => {
-                                                if (data.resultCode === 0) { unfollow(u.id) }
-                                                toggleFollowingProgress(false, u.id)
-                                            })
+                                        unFollowThunk(u.id)
+                                        // usersAPI.setUnfollow(u.id)
+                                        //     .then(data => {
+                                        //         if (data.resultCode === 0) { unfollow(u.id) }
+                                        //         toggleFollowingProgress(false, u.id)
+                                        //     })
                                     }} disabled={followingInProgress.some(id => id === u.id)}>Unfollow</button>
                                     :
                                     <button onClick={() => {
                                         toggleFollowingProgress(true, u.id)
-                                        usersAPI.setFollow(u.id)
-                                            .then(data => {
-                                                if (data.resultCode === 0) { follow(u.id) }
-                                                toggleFollowingProgress(false, u.id)
-                                            })
+                                        followThunk(u.id)
+                                        // usersAPI.setFollow(u.id)
+                                        //     .then(data => {
+                                        //         if (data.resultCode === 0) { follow(u.id) }
+                                        //         toggleFollowingProgress(false, u.id)
+                                        //     })
                                     }} disabled={followingInProgress.some(id => id === u.id)}>Follow</button>}
                             </div>
                             <div className="user__info">
