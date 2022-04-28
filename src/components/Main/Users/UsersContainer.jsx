@@ -2,6 +2,7 @@
 import { connect } from 'react-redux'
 import { followThunk, unFollowThunk, setCurrentPage, toggleFollowingProgress, getUsers } from '../../../redux/reducers/users-reducer'
 import React from "react"
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
 // == Styles:
 import './Users.scss'
 // == Components:
@@ -36,6 +37,8 @@ class UsersContainer extends React.Component {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(UsersContainer)
+
 const mapStateToProps = (state) => {
     return {
         users: state.UsersPage.users,
@@ -43,7 +46,7 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.UsersPage.totalUsersCount,
         currentPage: state.UsersPage.currentPage,
         isFetching: state.UsersPage.isFetching,
-        followingInProgress: state.UsersPage.followingInProgress
+        followingInProgress: state.UsersPage.followingInProgress,
     }
 }
 
@@ -55,4 +58,4 @@ export default connect(mapStateToProps,
         toggleFollowingProgress,
         getUsers
     }
-)(UsersContainer)
+)(AuthRedirectComponent)

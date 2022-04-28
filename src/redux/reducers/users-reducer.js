@@ -10,7 +10,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS'
 
 const data = {
     users: [],
-    pageSize: 5,
+    pageSize: 15,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -72,6 +72,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_I
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
+        dispatch(setCurrentPage(currentPage))
         usersAPI.getUsers(
             currentPage,
             pageSize
@@ -85,9 +86,12 @@ export const getUsers = (currentPage, pageSize) => {
 
 export const followThunk = (userId) => {
     return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId))
         usersAPI.setFollow(userId)
             .then(data => {
-                if (data.resultCode === 0) { dispatch(follow(userId)) }
+                if (data.resultCode === 0) {
+                    dispatch(follow(userId))
+                }
                 dispatch(toggleFollowingProgress(false, userId))
             })
     }
@@ -95,9 +99,12 @@ export const followThunk = (userId) => {
 
 export const unFollowThunk = (userId) => {
     return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId))
         usersAPI.setUnfollow(userId)
             .then(data => {
-                if (data.resultCode === 0) { dispatch(unfollow(userId)) }
+                if (data.resultCode === 0) {
+                    dispatch(unfollow(userId))
+                }
                 dispatch(toggleFollowingProgress(false, userId))
             })
     }

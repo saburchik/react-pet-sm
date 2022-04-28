@@ -9,6 +9,7 @@ import SidebarContainer from './components/Sidebar/SidebarContainer'
 import ProfileContainer from './components/Main/Profile/ProfileContainer'
 import UsersContainer from './components/Main/Users/UsersContainer'
 import DialogsContainer from './components/Main/Dialogs/DialogsContainer'
+import Login from './components/Main/Login/Login'
 import Footer from './components/Footer/Footer'
 import { Switch } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ export default function App() {
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
           <Route path='/dialogs' exact render={() => <DialogsContainer />} />
           <Route path='/users' exact render={() => <UsersContainer />} />
+          <Route path='/login' exact render={() => <Login />} />
         </Switch>
       </main>
       <Footer />
