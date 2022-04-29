@@ -8,17 +8,15 @@ import './Users.scss'
 // == Components:
 import Users from './Users'
 import Preloader from '../../common/Preloader'
+import { compose } from 'redux'
 
 class UsersContainer extends React.Component {
-
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
-
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
-
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> :
@@ -37,8 +35,6 @@ class UsersContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(UsersContainer)
-
 const mapStateToProps = (state) => {
     return {
         users: state.UsersPage.users,
@@ -50,12 +46,15 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,
-    {
-        followThunk,
-        unFollowThunk,
-        setCurrentPage,
-        toggleFollowingProgress,
-        getUsers
-    }
-)(AuthRedirectComponent)
+export default compose(
+    connect(mapStateToProps,
+        {
+            followThunk,
+            unFollowThunk,
+            setCurrentPage,
+            toggleFollowingProgress,
+            getUsers
+        }
+    ),
+    withAuthRedirect
+)(UsersContainer)

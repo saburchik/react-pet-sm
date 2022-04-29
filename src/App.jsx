@@ -1,6 +1,9 @@
 // == Base:
 import React from 'react'
 import { Route } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom"
+import store from './redux/redux-store'
+import { Provider } from 'react-redux'
 // == Styles:
 import './App.scss'
 // == Components:
@@ -16,18 +19,22 @@ import { Switch } from 'react-router-dom'
 export default function App() {
 
   return (
-    <div className="app">
-      <HeaderContainer />
-      <SidebarContainer />
-      <main className='app__main'>
-        <Switch>
-          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-          <Route path='/dialogs' exact render={() => <DialogsContainer />} />
-          <Route path='/users' exact render={() => <UsersContainer />} />
-          <Route path='/login' exact render={() => <Login />} />
-        </Switch>
-      </main>
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="app">
+          <HeaderContainer />
+          <SidebarContainer />
+          <main className='app__main'>
+            <Switch>
+              <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+              <Route path='/dialogs' exact render={() => <DialogsContainer />} />
+              <Route path='/users' exact render={() => <UsersContainer />} />
+              <Route path='/login' exact render={() => <Login />} />
+            </Switch>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </Provider>
   )
 }

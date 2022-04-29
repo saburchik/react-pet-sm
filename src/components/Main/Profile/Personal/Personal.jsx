@@ -1,6 +1,8 @@
 // == Styles:
-import Preloader from '../../../common/Preloader'
 import './Personal.scss'
+// == Components:
+import Preloader from '../../../common/Preloader'
+import PersonalStatus from './PersonalStatus'
 
 const Personal = ({ profile }) => {
     if (!profile) {
@@ -36,6 +38,9 @@ const Personal = ({ profile }) => {
                         </li>
                         <li>Описание желаемой работы:
                             <b> {profile.lookingForAJobDescription}</b>
+                        </li>
+                        <li>Описание желаемой работы:
+                            <PersonalStatus status="Hey  blya" />
                         </li>
                     </ul>
                 </article>

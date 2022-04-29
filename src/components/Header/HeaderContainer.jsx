@@ -1,6 +1,7 @@
 // == Base:
 import React from 'react'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { setAuth } from '../../redux/reducers/auth-reducer'
 // == Components:
 import Header from './Header'
@@ -22,4 +23,6 @@ const mapStateToProps = (state) => ({
     login: state.Auth.login
 })
 
-export default connect(mapStateToProps, { setAuth })(HeaderContainer)
+export default compose(
+    connect(mapStateToProps, { setAuth })
+)(HeaderContainer)

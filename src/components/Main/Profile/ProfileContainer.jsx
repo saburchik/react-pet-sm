@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 import './Profile.scss'
 // == Components:
 import Profile from './Profile'
+import { compose } from 'redux'
 
 class ProfileContainer extends React.Component {
 
@@ -14,6 +15,7 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId
         if (!userId) { userId = 1034 }
         this.props.getProfileUsersThunk(userId)
+        this.props.getUserStatus(userId)
     }
 
     render() {
@@ -23,13 +25,12 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.ProfilePage.profile
+        profile: state.ProfilePage.profile,
+        status: state.ProfilePage.status
     }
 }
 
-let WithUrlDataComponent = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, {
-    getProfileUsersThunk
-}
-)(WithUrlDataComponent)
+export default compose(
+    connect(mapStateToProps, { getProfileUsersThunk }),
+    withRouter
+)(ProfileContainer)
