@@ -5,11 +5,11 @@ import './PersonalStatus.scss'
 
 class PersonalStatus extends Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     activateEditMode = () => {
-        debugger
         console.log('this: ', this);
         this.setState({ // setState is async 
             editMode: true
@@ -20,15 +20,32 @@ class PersonalStatus extends Component {
         this.setState({
             editMode: false
         })
+        this.props.updateStatus(this.state.status)
+    }
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
     }
 
     render() {
         return (
             <div>
                 {!this.state.editMode ?
-                    <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+                    <span className="status__span" onDoubleClick={this.activateEditMode}>
+                        {this.props.status === null ? 'Не указан' : this.props.status}
+                    </span>
                     :
-                    <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status} type="text" />}
+                    <input
+                        className="status__input"
+                        onChange={this.onStatusChange}
+                        autoFocus={true}
+                        onBlur={this.deactivateEditMode.bind(this)}
+                        value={this.state.status}
+                        type="text"
+                    />
+                }
             </div>
         )
     }

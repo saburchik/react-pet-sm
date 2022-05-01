@@ -12,7 +12,7 @@ const data = {
         { id: 2, message: 'Oh my god, who I looking at? I am fine bro' },
         { id: 3, message: 'zzz' }
     ],
-    status: 'skkdnjanj ',
+    status: '',
     profile: null
 }
 
@@ -36,6 +36,8 @@ const profileReducer = (state = data, action) => {
             }
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile }
+        case SET_STATUS:
+            return { ...state, status: action.status }
         default:
             return state
     }
@@ -45,11 +47,31 @@ export const addPostActionCreate = () => ({ type: ADD_POST })
 export const updateActionChange = (text) => ({ type: UPDATE_POST_TEXT, newText: text })
 export const deletePost = (postId) => ({ type: DELETE_POST, postId })
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
+const setStatus = (status) => ({ type: SET_STATUS, status })
+
 
 export const getProfileUsersThunk = (userId) => {
     return (dispatch) => {
         profileAPI.getProfileUsers(userId).then(res => {
             dispatch(setUserProfile(res.data))
+        })
+    }
+}
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId).then(res => {
+            dispatch(setStatus(res.data))
+        })
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status).then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
         })
     }
 }

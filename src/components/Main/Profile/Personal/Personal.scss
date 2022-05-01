@@ -20,9 +20,14 @@
     // gap: 0.5rem;
     // padding: 0.5rem;
 
-    // .personal__info {
-    //     grid-area: info;
-    // }
+    .personal__info {
+        ul li {
+            display: grid;
+            gap: 0.5rem;
+            grid-auto-flow: column;
+            width: fit-content;
+        }
+    }
 }
 
 .personal__header {

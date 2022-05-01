@@ -4,7 +4,7 @@ import './Personal.scss'
 import Preloader from '../../../common/Preloader'
 import PersonalStatus from './PersonalStatus'
 
-const Personal = ({ profile }) => {
+const Personal = ({ profile, status, updateStatus }) => {
     if (!profile) {
         return <Preloader />
     }
@@ -34,13 +34,13 @@ const Personal = ({ profile }) => {
                             <a href='https://saburchik.herokuapp.com' target="_blank" rel="noreferrer"> {profile.contacts.vk}</a>
                         </li>
                         <li>Ищу работу:
-                            <b> {profile.lookingForAJob === true ? "Да" : "Не ищу"}</b>
+                            <b>{profile.lookingForAJob === true ? "Да" : "Не ищу"}</b>
                         </li>
                         <li>Описание желаемой работы:
-                            <b> {profile.lookingForAJobDescription}</b>
+                            <b>{profile.lookingForAJobDescription}</b>
                         </li>
-                        <li>Описание желаемой работы:
-                            <PersonalStatus status="Hey  blya" />
+                        <li>Статус:
+                            <PersonalStatus status={status} updateStatus={updateStatus} />
                         </li>
                     </ul>
                 </article>
