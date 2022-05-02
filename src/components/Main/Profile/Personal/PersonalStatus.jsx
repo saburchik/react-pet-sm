@@ -9,27 +9,33 @@ class PersonalStatus extends Component {
         status: this.props.status
     }
 
-    activateEditMode = () => {
-        console.log('this: ', this);
-        this.setState({ // setState is async 
-            editMode: true
-        })
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+
+        console.log('times')
     }
 
-    deactivateEditMode() {
-        this.setState({
-            editMode: false
-        })
+    activateEditMode = () => {
+        this.setState({ editMode: true })
+    }
+
+    deactivateEditMode = () => {
+        this.setState({ editMode: false })
         this.props.updateStatus(this.state.status)
     }
 
     onStatusChange = (e) => {
-        this.setState({
-            status: e.currentTarget.value
-        })
+        ///console.log(e.currentTarget.value)
+        this.setState({ status: e.currentTarget.value })
     }
 
     render() {
+        console.log('render')
         return (
             <div>
                 {!this.state.editMode ?
@@ -41,7 +47,7 @@ class PersonalStatus extends Component {
                         className="status__input"
                         onChange={this.onStatusChange}
                         autoFocus={true}
-                        onBlur={this.deactivateEditMode.bind(this)}
+                        onBlur={this.deactivateEditMode}
                         value={this.state.status}
                         type="text"
                     />

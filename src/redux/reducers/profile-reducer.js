@@ -34,10 +34,10 @@ const profileReducer = (state = data, action) => {
                 ...state,
                 defaultValue: action.newText
             }
-        case SET_USER_PROFILE:
-            return { ...state, profile: action.profile }
         case SET_STATUS:
             return { ...state, status: action.status }
+        case SET_USER_PROFILE:
+            return { ...state, profile: action.profile }
         default:
             return state
     }
@@ -58,22 +58,20 @@ export const getProfileUsersThunk = (userId) => {
     }
 }
 
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(res => {
+export const getStatus = (userId) => (dispatch) => {
+    profileAPI.getStatus(userId)
+        .then(res => {
             dispatch(setStatus(res.data))
         })
-    }
 }
 
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(res => {
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
+        .then(res => {
             if (res.data.resultCode === 0) {
                 dispatch(setStatus(status))
             }
         })
-    }
 }
 
 export default profileReducer
