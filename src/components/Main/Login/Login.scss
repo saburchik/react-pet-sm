@@ -1,0 +1,19 @@
+.login {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    gap: 3rem;
+    padding: 1rem;
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        grid-auto-rows: max-content;
+        gap: 1rem;
+        max-width: 350px;
+        width: 100%;
+    }
+}

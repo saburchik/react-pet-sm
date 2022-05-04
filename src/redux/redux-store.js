@@ -1,5 +1,8 @@
+// == Base:
 import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import thunkMiddleware from 'redux-thunk'
+// == Reducers:
 import profileReducer from './reducers/profile-reducer'
 import dialogsReducer from './reducers/dialogs-reducer'
 import sidebarReducer from './reducers/sidebar-reducer'
@@ -12,7 +15,8 @@ let reducers = combineReducers({
     DialogsPage: dialogsReducer,
     Sidebar: sidebarReducer,
     UsersPage: usersReducer,
-    Auth: authReducer
+    Auth: authReducer,
+    form: formReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))
