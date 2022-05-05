@@ -1,21 +1,16 @@
 // == Base:
 import React from 'react'
+import { Field, reduxForm } from 'redux-form'
 // == Styles:
 import './Dialogs.scss'
 // == Components:
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 
-const Dialogs = ({ state, defaultValue, updateText, addMessage }) => {
-    const createMessage = React.createRef()
-
-    const onAddMessage = () => {
-        addMessage()
-    }
-
-    const onUpdateText = () => {
-        let text = createMessage.current.value
-        updateText(text)
+const Dialogs = ({ state, addMessage }) => {
+    const onSubmit = (values) => {
+        addMessage(values.textareaMessage)
+        values.textareaMessage = ''
     }
 
     return (
@@ -36,14 +31,27 @@ const Dialogs = ({ state, defaultValue, updateText, addMessage }) => {
                             state.messages.map(m => <Message key={m.id} id={m.id} name={m.name} message={m.message} />)
                         }
                     </ul>
-                    <div className='message__sends'>
-                        <textarea className='message__textarea' value={defaultValue} ref={createMessage} onChange={onUpdateText} />
-                        <button onClick={onAddMessage}>Send</button>
-                    </div>
+                    <DialogsReduxForm onSubmit={onSubmit} />
                 </div>
             </div>
         </section>
     )
 }
+
+const DialogForm = ({ handleSubmit }) => {
+
+    return (
+        <form className='message__sends' onSubmit={handleSubmit}>
+            <Field
+                className='message__textarea'
+                name='textareaMessage'
+                component="textarea"
+            />
+            <button>Send</button>
+        </form>
+    )
+}
+
+const DialogsReduxForm = reduxForm({ form: 'dialogs' })(DialogForm)
 
 export default Dialogs

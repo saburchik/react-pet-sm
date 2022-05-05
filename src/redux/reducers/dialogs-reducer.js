@@ -1,8 +1,6 @@
 const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
 
 const data = {
-    defaultValue: 'Enter a text',
     dialogs: [
         { id: 1, name: 'Andrey' },
         { id: 3, name: 'Masha' },
@@ -19,23 +17,13 @@ const dialogsReducer = (state = data, action) => {
         case ADD_MESSAGE:
             return {
                 ...state,
-                messages: [...state.messages, { id: 5, message: state.defaultValue }],
-                defaultValue: ''
-            }
-        case UPDATE_MESSAGE_TEXT:
-            return {
-                ...state,
-                defaultValue: action.newMessage
+                messages: [...state.messages, { id: 5, message: action.newMessage }],
             }
         default:
             return state
     }
 }
 
-export const addMessageActionCreate = () => ({ type: ADD_MESSAGE })
-export const updateMessageActionChange = (text) => ({
-    type: UPDATE_MESSAGE_TEXT,
-    newMessage: text
-})
+export const addMessageActionCreate = (newMessage) => ({ type: ADD_MESSAGE, newMessage })
 
 export default dialogsReducer

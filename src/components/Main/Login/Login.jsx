@@ -5,9 +5,7 @@ import './Login.scss'
 // == Components:
 
 const Login = () => {
-    const onSubmit = (formData) => {
-        console.log(formData);
-    }
+    const onSubmit = (formData) => console.log(formData);
 
     return (
         <div className="login">
@@ -17,8 +15,7 @@ const Login = () => {
     )
 }
 
-const LoginForm = (props) => {
-    const { handleSubmit } = props
+const LoginForm = ({ handleSubmit }) => {
     return (
         <form onSubmit={handleSubmit}>
             <Field name="login" placeholder="Enter login" component="input" />
