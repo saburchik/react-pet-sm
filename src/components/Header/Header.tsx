@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // == Styles:
 import './Header.scss'
 
-const Header = ({ isAuth, login }) => {
+const Header = ({ isAuth, login }): React.FC => {
     return (
         <header className="App-header">
             <Link className="header__logo" to='/' >

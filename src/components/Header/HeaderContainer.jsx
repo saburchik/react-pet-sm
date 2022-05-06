@@ -2,9 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { setAuth } from '../../redux/reducers/auth-reducer'
+import { setAuth } from '../../redux/reducers/auth-reducer.ts'
 // == Components:
-import Header from './Header'
+import Header from './Header.tsx'
 
 class HeaderContainer extends React.Component {
     componentDidMount() {

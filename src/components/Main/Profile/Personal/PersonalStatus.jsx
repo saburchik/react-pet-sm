@@ -16,8 +16,6 @@ class PersonalStatus extends Component {
                 status: this.props.status
             })
         }
-
-        console.log('times')
     }
 
     activateEditMode = () => {
@@ -35,7 +33,6 @@ class PersonalStatus extends Component {
     }
 
     render() {
-        console.log('render')
         return (
             <div>
                 {!this.state.editMode ?

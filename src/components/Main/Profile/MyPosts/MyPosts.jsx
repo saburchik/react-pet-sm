@@ -1,10 +1,12 @@
 // == Base:
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { required, maxLengthCreator, valueEmpty } from '../../../../utils/validators/validators'
 // == Styles:
 import './MyPosts.scss'
 // == Components:
 import Post from './Post/Post'
+import { Textarea } from '../../../common/FormControls'
 
 const MyPosts = ({ posts, addPost }) => {
     const onSubmit = (values) => {
@@ -24,16 +26,22 @@ const MyPosts = ({ posts, addPost }) => {
         </article>
     )
 }
+const maxLength10 = maxLengthCreator(10)
 
 const MyPostForm = ({ handleSubmit }) => {
+
     return (
         <form className='posts__textarea' onSubmit={handleSubmit}>
-            <Field name="newPost" component="textarea" />
+            <Field
+                name="newPost"
+                component={Textarea}
+                validate={[required, maxLength10, valueEmpty]}
+            />
             <button>Add post</button>
         </form>
     )
 }
 
-const MyPostReduxForm = reduxForm({ form: 'mypost' })(MyPostForm)
+const MyPostReduxForm = reduxForm({ form: 'addPost' })(MyPostForm)
 
 export default MyPosts
