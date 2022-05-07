@@ -1,19 +1,18 @@
-
 // == Styles:
 import './FormControls.scss'
 
-
-export const Textarea = ({ input, meta, ...props }) => {
-    //debugger
-
+const FormControl = ({ input, meta, Tag, ...props }) => {
     const hasError = meta.touched &&
         ((meta.error && <span>{meta.error}</span>) ||
             (meta.warning && <span>{meta.warning}</span>))
 
     return (
-        <div className={'form-control' + hasError ? 'error' : null}>
-            <textarea {...input} {...props} />
+        <div className={'form-control ' + (hasError ? 'error' : '')}>
+            <Tag {...input} {...props} />
             {hasError}
         </div>
     )
 }
+
+export const Textarea = (props) => <FormControl Tag="textarea"  {...props} />
+export const Input = (props) => <FormControl Tag="input"  {...props} />

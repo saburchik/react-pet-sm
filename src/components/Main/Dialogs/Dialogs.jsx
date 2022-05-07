@@ -6,6 +6,8 @@ import './Dialogs.scss'
 // == Components:
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
+import { Textarea } from '../../common/FormControls'
+import { required, maxLengthCreator } from '../../../utils/validators/validators'
 
 const Dialogs = ({ state, addMessage }) => {
     const onSubmit = (values) => {
@@ -38,6 +40,8 @@ const Dialogs = ({ state, addMessage }) => {
     )
 }
 
+const maxLength10 = maxLengthCreator(10)
+
 const DialogForm = ({ handleSubmit }) => {
 
     return (
@@ -45,7 +49,8 @@ const DialogForm = ({ handleSubmit }) => {
             <Field
                 className='message__textarea'
                 name='textareaMessage'
-                component="textarea"
+                component={Textarea}
+                validate={[required, maxLength10]}
             />
             <button>Send</button>
         </form>

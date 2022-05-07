@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { setAuth } from '../../redux/reducers/auth-reducer.ts'
+import { setAuth } from '../../redux/reducers/auth-reducer'
 // == Components:
 import Header from './Header.tsx'
 

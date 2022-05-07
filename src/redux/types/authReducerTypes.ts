@@ -5,16 +5,16 @@ export enum UsersDataTypes {
 export interface AuthState {
     id: null | number
     email: null | string
-    login: null | string
+    password: null | string
     isAuth: boolean
 }
 
 export interface SetUsersAction {
     type: UsersDataTypes.SET_USERS_DATA
-    data: object | string
+    payload: object | string
 }
 
 export interface AuthAction {
     type: string
-    data: object | string
+    payload: object | string
 }
