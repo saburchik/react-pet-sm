@@ -17,3 +17,11 @@
         width: 100%;
     }
 }
+
+.login__error {
+    width: 100%;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    padding: 0.5rem;
+}

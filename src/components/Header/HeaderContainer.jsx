@@ -2,9 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { setAuth } from '../../redux/reducers/auth-reducer'
+import { setAuth, logout } from '../../redux/reducers/auth-reducer'
 // == Components:
-import Header from './Header.tsx'
+import Header from './Header'
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -12,17 +12,18 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
+
         return (
-            <Header {...this.props} />
+            <Header {...this.props} profile={this.props.profile} />
         )
     }
 }
 
 const mapStateToProps = (state) => ({
     isAuth: state.Auth.isAuth,
-    login: state.Auth.login
+    email: state.Auth.email
 })
 
 export default compose(
-    connect(mapStateToProps, { setAuth })
+    connect(mapStateToProps, { setAuth, logout })
 )(HeaderContainer)

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // == Styles:
 import './Header.scss'
 
-const Header = ({ isAuth, login }): React.FC => {
+const Header = ({ isAuth, email, logout }) => {
     return (
         <header className="App-header">
             <Link className="header__logo" to='/' >
@@ -11,8 +11,8 @@ const Header = ({ isAuth, login }): React.FC => {
             </Link>
             {isAuth ?
                 <div className="header__login">
-                    <h4>{login}</h4>
-                    <Link to="/login">Logout</Link>
+                    <h4>{email}</h4>
+                    <button onClick={logout}>Logout</button>
                 </div>
                 :
                 <Link className="header__login" to="/login">Login</Link>
