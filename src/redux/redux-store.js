@@ -8,6 +8,7 @@ import dialogsReducer from './reducers/dialogs-reducer'
 import sidebarReducer from './reducers/sidebar-reducer'
 import usersReducer from './reducers/users-reducer'
 import authReducer from './reducers/auth-reducer'
+import appReducer from './reducers/app-reducer'
 
 
 let reducers = combineReducers({
@@ -16,6 +17,7 @@ let reducers = combineReducers({
     Sidebar: sidebarReducer,
     UsersPage: usersReducer,
     Auth: authReducer,
+    App: appReducer,
     form: formReducer
 })
 

@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getProfileUsersThunk, getStatus, updateStatus } from '../../../redux/reducers/profile-reducer'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 // == Styles:
 import './Profile.scss'
@@ -12,10 +12,12 @@ import Profile from './Profile'
 class ProfileContainer extends React.Component {
     // 23541 1034
     componentDidMount() {
-        debugger
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.authorizedUserId
+            if (!userId) {
+                this.props.history.push('/login')
+            }
         }
         this.props.getProfileUsersThunk(userId)
         this.props.getStatus(userId)

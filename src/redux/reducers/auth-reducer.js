@@ -26,13 +26,13 @@ const setAuthUserData = (id, email, password, isAuth) => ({ type: SET_USERS_DATA
 
 export const setAuth = () => {
     return (dispatch) => {
-        authAPI.me()
+        return authAPI.me()
             .then(res => {
                 if (res.data.resultCode === 0) {
                     let { id, password, email } = res.data.data;
                     dispatch(setAuthUserData(id, email, password, true))
                 }
-            });
+            })
     }
 }
 
