@@ -2,7 +2,7 @@
 import './Personal.scss'
 // == Components:
 import Preloader from '../../../common/Preloader'
-import PersonalStatus from './PersonalStatus'
+import PersonalStatusHook from './PersonalStatusHook'
 
 const Personal = ({ profile, status, updateStatus }) => {
     if (!profile) {
@@ -40,7 +40,7 @@ const Personal = ({ profile, status, updateStatus }) => {
                             <b>{profile.lookingForAJobDescription}</b>
                         </li>
                         <li>Статус:
-                            <PersonalStatus status={status} updateStatus={updateStatus} />
+                            <PersonalStatusHook status={status} updateStatus={updateStatus} />
                         </li>
                     </ul>
                 </article>
