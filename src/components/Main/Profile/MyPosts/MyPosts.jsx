@@ -8,24 +8,26 @@ import './MyPosts.scss'
 import Post from './Post/Post'
 import { Textarea } from '../../../common/FormControls'
 
-const MyPosts = ({ posts, addPost }) => {
+const MyPosts = React.memo(props => {
+
     const onSubmit = (values) => {
-        addPost(values.newPost)
+        props.addPost(values.newPost)
         values.newPost = ''
     }
 
     return (
-        <article className='posts__inner'>
+        <article className='posts__inner' >
             <h3 className='title-h3'>My posts</h3>
             <MyPostReduxForm onSubmit={onSubmit} />
             <aside className='posts__wrapper'>
                 {
-                    posts.map(p => <Post key={p.id} id={p.id} message={p.message} />)
+                    props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} />)
                 }
             </aside>
         </article>
     )
-}
+})
+
 const maxLength10 = maxLengthCreator(10)
 
 const MyPostForm = ({ handleSubmit }) => {
