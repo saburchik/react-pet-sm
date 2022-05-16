@@ -4,7 +4,7 @@ import * as axios from "axios"
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: { "API-KEY": 'd6070ed5-dca9-4432-bab4-16c916490a2f' },
+    headers: { "API-KEY": 'eaec77de-b938-4b83-939a-28d3b36730b2' },
 })
 
 export const usersAPI = {
@@ -14,12 +14,12 @@ export const usersAPI = {
             .then(response => response.data)
     },
 
-    setUnfollow(userId) {
+    unfollow(userId) {
         return instance
             .delete(`follow/${userId}`)
             .then(response => response.data)
     },
-    setFollow(userId) {
+    follow(userId) {
         return instance
             .post(`follow/${userId}`)
             .then(response => response.data)

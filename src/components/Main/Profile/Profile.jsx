@@ -1,13 +1,13 @@
 // == Styles:
 import './Profile.scss'
 // == Components:
-import Personal from './Personal/Personal'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 
 const Profile = ({ profile, status, updateStatus }) => {
     return (
         <div className='profile'>
-            <Personal profile={profile} status={status} updateStatus={updateStatus} />
+            <ProfileInfo profile={profile} status={status} updateStatus={updateStatus} />
             <MyPostsContainer />
         </div>
     )

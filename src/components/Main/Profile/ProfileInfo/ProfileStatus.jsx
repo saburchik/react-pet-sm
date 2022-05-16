@@ -1,15 +1,13 @@
 // == Styles:
 import { useEffect, useState } from 'react'
-import './PersonalStatus.scss'
+import './ProfileInfo.scss'
 
 
-const PersonalStatusHook = ({ status, updateStatus }) => {
-
+const ProfileStatus = ({ status, updateStatus }) => {
     const [editMode, setEditMode] = useState(false)
     const [statusState, setStatusState] = useState(status)
 
     useEffect(() => {
-
         setStatusState(status)
     }, [status])
 
@@ -46,4 +44,4 @@ const PersonalStatusHook = ({ status, updateStatus }) => {
     )
 }
 
-export default PersonalStatusHook
+export default ProfileStatus

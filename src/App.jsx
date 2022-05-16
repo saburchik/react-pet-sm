@@ -5,9 +5,6 @@ import { connect } from 'react-redux'
 import { initializeApp } from './redux/reducers/app-reducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { BrowserRouter } from "react-router-dom"
-import store from './redux/redux-store'
-import { Provider } from 'react-redux'
 // == Styles:
 import './App.scss'
 // == Components:
@@ -31,23 +28,19 @@ class App extends React.Component {
     }
 
     return (
-      <Provider store={store} >
-        <BrowserRouter>
-          <div className="app">
-            <HeaderContainer />
-            <SidebarContainer />
-            <main className='app__main'>
-              <Switch>
-                <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-                <Route path='/dialogs' exact render={() => <DialogsContainer />} />
-                <Route path='/users' exact render={() => <UsersContainer />} />
-                <Route path='/login' exact render={() => <Login />} />
-              </Switch>
-            </main>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </Provider>
+      <div className="app">
+        <HeaderContainer />
+        <SidebarContainer />
+        <main className='app__main'>
+          <Switch>
+            <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+            <Route path='/dialogs' exact render={() => <DialogsContainer />} />
+            <Route path='/users' exact render={() => <UsersContainer />} />
+            <Route path='/login' exact render={() => <Login />} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
     )
   }
 }
