@@ -14,11 +14,11 @@ import Preloader from '../../common/Preloader'
 class UsersContainer extends React.Component {
     componentDidMount() {
         const { currentPage, pageSize } = this.props
-        this.props.requestUsers(currentPage, pageSize)
+        this.props.getUsers(currentPage, pageSize)
     }
     onPageChanged = (pageNumber) => {
         const pageSize = this.props
-        this.props.requestUsers(pageNumber, pageSize)
+        this.props.getUsers(pageNumber, pageSize)
     }
     render() {
         return <>
@@ -56,7 +56,7 @@ export default compose(
             unfollowThunk,
             setCurrentPage,
             toggleFollowingProgress,
-            requestUsers
+            getUsers: requestUsers
         }
     )
 )(UsersContainer)

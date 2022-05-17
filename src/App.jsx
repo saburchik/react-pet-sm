@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import { initializeApp } from './redux/reducers/app-reducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom"
+import store from './redux/redux-store'
+import { Provider } from 'react-redux'
 // == Styles:
 import './App.scss'
 // == Components:
@@ -51,7 +54,19 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default compose(
+const AppContainer = compose(
   connect(mapStateToProps, { initializeApp }),
   withRouter
 )(App)
+
+const MainApp = () => {
+  return (
+    <Provider store={store} >
+      <BrowserRouter>
+        <AppContainer />
+      </BrowserRouter>
+    </Provider >
+  )
+}
+
+export default MainApp
