@@ -30,12 +30,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -49,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-jest": "^26.2.2",
     "sass": "^1.45.2"
   }
 }

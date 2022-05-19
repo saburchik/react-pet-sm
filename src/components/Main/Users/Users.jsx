@@ -6,16 +6,16 @@ import './Users.scss'
 import Paginator from "../../common/Paginator"
 import User from './User'
 
-const Users = ({ totalUsersCount, pageSize, currentPage, onPageChanged, users, ...props }) => {
+const Users = ({ totalItemsCount, userSize, pageSize, currentPage, onPageChanged, users, ...props }) => {
     return (
         <div className="users">
             <h2>Users</h2>
-            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount} pageSize={pageSize} />
             <ul className="users__items">
                 {users.map(user => <User user={user} key={user.id} followThunk={props.followThunk}
                     unfollowThunk={props.unfollowThunk} followingInProgress={props.followingInProgress} />
                 )}
             </ul>
+            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalItemsCount} userSize={userSize} />
         </div >
     )
 }

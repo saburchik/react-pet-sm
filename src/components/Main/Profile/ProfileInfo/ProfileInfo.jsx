@@ -2,7 +2,7 @@
 import './ProfileInfo.scss'
 // == Components:
 import Preloader from '../../../common/Preloader'
-import ProfileStatus from './ProfileStatus'
+import ProfileStatusClass from './ProfileStatusClass'
 import Photo from '../../../common/Photo'
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {
@@ -41,7 +41,7 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
                             <b>{profile.lookingForAJobDescription}</b>
                         </li>
                         <li>Статус:
-                            <ProfileStatus status={status} updateStatus={updateStatus} />
+                            <ProfileStatusClass status={status} updateStatus={updateStatus} />
                         </li>
                     </ul>
                 </article>
