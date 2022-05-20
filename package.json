@@ -1,5 +1,6 @@
 {
   "name": "react",
+  "homepage": "https://saburchik.github.io/react-pet-sm",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +17,6 @@
     "react-redux": "^7.2.7",
     "react-router-dom": "^5.3.1",
     "react-scripts": "5.0.0",
-    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.2",
     "redux-form": "^8.3.8",
     "redux-thunk": "^2.4.1",
@@ -25,6 +25,8 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +46,9 @@
   },
   "devDependencies": {
     "eslint-plugin-jest": "^26.2.2",
+    "gh-pages": "^4.0.0",
+    "jest": "^28.1.0",
+    "react-test-renderer": "^17.0.2",
     "sass": "^1.45.2"
   }
 }

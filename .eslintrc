@@ -1,13 +1,12 @@
 {
     "extends": [
         "react-app",
-        "react-app/jest",
-        "eslint:recommended"
+        "react-app/jest"
     ],
     "parser": "@babel/eslint-parser",
-    "plugin": [
-        "jest"
-    ],
+    "env": {
+        "jest/globals": true
+    },
     "rules": {
         "jest/no-disabled-tests": "warn",
         "jest/no-focused-tests": "error",

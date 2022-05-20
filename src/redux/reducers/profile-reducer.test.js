@@ -27,5 +27,5 @@ test('after deleting the length of message should be decrement', () => {
     // == The second one is the action:
     let newState = profileReducer(dataLocal, action)
     // == The third one is the expectation:
-    expect(newState.posts.length).toBe(2)
+    expect(newState.posts).toHaveLength(2)
 })

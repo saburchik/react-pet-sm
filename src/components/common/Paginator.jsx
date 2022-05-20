@@ -18,8 +18,7 @@ const Paginator = ({ totalItemsCount, userSize, pageSize = 10, currentPage, onPa
 
     return (
         <ul className="paginator">
-            {
-                portionNumber > 1 &&
+            {portionNumber > 1 &&
                 <button onClick={() => { setPortionNumber(portionNumber - 1) }}>prev</button>}
             {pages.filter(page => page >= prevSide && page <= nextSide)
                 .map(page => {

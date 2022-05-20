@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/await-async-query */
 import React from 'react';
 import ProfileStatusClass from "./ProfileStatusClass"
 import { create } from "react-test-renderer";
@@ -44,6 +45,6 @@ describe("ProfileStatus component", () => {
         const component = create(<ProfileStatusClass status="Saburik" updateStatus={mockCallback} />)
         const instance = component.getInstance()
         instance.deactivateEditMode()
-        expect(mockCallback.mock.calls.length).toBe(1)
+        expect(mockCallback.mock.calls).toHaveLength(1)
     });
 });
