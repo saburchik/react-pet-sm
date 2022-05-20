@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-pet-sm/static/css/main.fd651fcd.css",
-    "main.js": "/react-pet-sm/static/js/main.99dbe296.js",
-    "static/css/414.43669daf.chunk.css": "/react-pet-sm/static/css/414.43669daf.chunk.css",
-    "static/js/414.6b57ff41.chunk.js": "/react-pet-sm/static/js/414.6b57ff41.chunk.js",
-    "static/css/54.7e195f51.chunk.css": "/react-pet-sm/static/css/54.7e195f51.chunk.css",
-    "static/js/54.9707d870.chunk.js": "/react-pet-sm/static/js/54.9707d870.chunk.js",
-    "static/css/399.7a33947b.chunk.css": "/react-pet-sm/static/css/399.7a33947b.chunk.css",
-    "static/js/399.f3f8e7ec.chunk.js": "/react-pet-sm/static/js/399.f3f8e7ec.chunk.js",
-    "index.html": "/react-pet-sm/index.html",
-    "main.fd651fcd.css.map": "/react-pet-sm/static/css/main.fd651fcd.css.map",
-    "main.99dbe296.js.map": "/react-pet-sm/static/js/main.99dbe296.js.map",
-    "414.43669daf.chunk.css.map": "/react-pet-sm/static/css/414.43669daf.chunk.css.map",
-    "414.6b57ff41.chunk.js.map": "/react-pet-sm/static/js/414.6b57ff41.chunk.js.map",
-    "54.7e195f51.chunk.css.map": "/react-pet-sm/static/css/54.7e195f51.chunk.css.map",
-    "54.9707d870.chunk.js.map": "/react-pet-sm/static/js/54.9707d870.chunk.js.map",
-    "399.7a33947b.chunk.css.map": "/react-pet-sm/static/css/399.7a33947b.chunk.css.map",
-    "399.f3f8e7ec.chunk.js.map": "/react-pet-sm/static/js/399.f3f8e7ec.chunk.js.map"
+    "main.css": "https://saburchik.github.io/react-pet-sm/static/css/main.fd651fcd.css",
+    "main.js": "https://saburchik.github.io/react-pet-sm/static/js/main.7b0af1e0.js",
+    "static/css/414.43669daf.chunk.css": "https://saburchik.github.io/react-pet-sm/static/css/414.43669daf.chunk.css",
+    "static/js/414.6b57ff41.chunk.js": "https://saburchik.github.io/react-pet-sm/static/js/414.6b57ff41.chunk.js",
+    "static/css/54.7e195f51.chunk.css": "https://saburchik.github.io/react-pet-sm/static/css/54.7e195f51.chunk.css",
+    "static/js/54.9707d870.chunk.js": "https://saburchik.github.io/react-pet-sm/static/js/54.9707d870.chunk.js",
+    "static/css/399.7a33947b.chunk.css": "https://saburchik.github.io/react-pet-sm/static/css/399.7a33947b.chunk.css",
+    "static/js/399.f3f8e7ec.chunk.js": "https://saburchik.github.io/react-pet-sm/static/js/399.f3f8e7ec.chunk.js",
+    "index.html": "https://saburchik.github.io/react-pet-sm/index.html",
+    "main.fd651fcd.css.map": "https://saburchik.github.io/react-pet-sm/static/css/main.fd651fcd.css.map",
+    "main.7b0af1e0.js.map": "https://saburchik.github.io/react-pet-sm/static/js/main.7b0af1e0.js.map",
+    "414.43669daf.chunk.css.map": "https://saburchik.github.io/react-pet-sm/static/css/414.43669daf.chunk.css.map",
+    "414.6b57ff41.chunk.js.map": "https://saburchik.github.io/react-pet-sm/static/js/414.6b57ff41.chunk.js.map",
+    "54.7e195f51.chunk.css.map": "https://saburchik.github.io/react-pet-sm/static/css/54.7e195f51.chunk.css.map",
+    "54.9707d870.chunk.js.map": "https://saburchik.github.io/react-pet-sm/static/js/54.9707d870.chunk.js.map",
+    "399.7a33947b.chunk.css.map": "https://saburchik.github.io/react-pet-sm/static/css/399.7a33947b.chunk.css.map",
+    "399.f3f8e7ec.chunk.js.map": "https://saburchik.github.io/react-pet-sm/static/js/399.f3f8e7ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fd651fcd.css",
-    "static/js/main.99dbe296.js"
+    "static/js/main.7b0af1e0.js"
   ]
 }
