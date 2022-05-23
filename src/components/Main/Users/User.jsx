@@ -1,16 +1,15 @@
 // == Base:
 import { Link } from 'react-router-dom'
-import Photo from '../../common/Photo';
+import Avatar from '../../common/Avatar';
 // == Styles:
 import './Users.scss'
 
 const User = ({ followThunk, unfollowThunk, user, followingInProgress }) => {
-    console.log('user');
     return (
         <li className="user__item" key={user.id}>
             <div className="user__photo">
                 <Link to={'/profile/' + user.id}>
-                    <Photo className={null} photo={user.photos.large} />
+                    <Avatar className={null} avatar={user.photos.large} />
                 </Link>
                 {user.followed ?
                     <button onClick={() => unfollowThunk(user.id)}
