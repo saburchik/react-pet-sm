@@ -23,9 +23,10 @@
     .personal__info {
         ul li {
             display: grid;
-            gap: 0.5rem;
+            gap: 1rem;
             grid-auto-flow: column;
             width: fit-content;
+            margin-bottom: 0.5rem;
         }
     }
 }
@@ -97,4 +98,13 @@
 
 .personal__file {
     padding-top: 1.5rem;
+}
+
+.personal__contacts {
+    p {
+        margin-bottom: 0.5rem;
+    }
+    li {
+        padding-left: 1rem;
+    }
 }

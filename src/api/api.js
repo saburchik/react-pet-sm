@@ -1,52 +1,54 @@
-// == Base:
-import * as axios from "axios"
+import * as axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    withCredentials: true,
-    headers: { "API-KEY": 'eaec77de-b938-4b83-939a-28d3b36730b2' },
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  withCredentials: true,
+  headers: { 'API-KEY': '417a4546-cd19-4989-82a7-ef04f20da7fb' },
 })
 
 export const usersAPI = {
-    getUsers(currentPage = 1, userSize = 5) {
-        return instance
-            .get(`users?page=${currentPage}&count=${userSize}`)
-            .then(response => response.data)
-    },
+  getUsers(currentPage = 1, userSize = 5) {
+    return instance
+      .get(`users?page=${currentPage}&count=${userSize}`)
+      .then((response) => response.data)
+  },
 
-    unfollow(userId) {
-        return instance.delete(`follow/${userId}`)
-    },
-    follow(userId) {
-        return instance.post(`follow/${userId}`)
-    }
+  unfollow(userId) {
+    return instance.delete(`follow/${userId}`)
+  },
+  follow(userId) {
+    return instance.post(`follow/${userId}`)
+  },
 }
 
 export const profileAPI = {
-    getProfileUsers(userId) {
-        return instance.get(`profile/${userId}`)
-    },
-    getStatus(userId) {
-        return instance.get(`profile/status/${userId}`)
-    },
-    updateStatus(status) {
-        return instance.put(`profile/status`, { status: status })
-    },
-    savePhoto(photo) {
-        const formData = new FormData()
-        formData.append('image', photo)
-        return instance.put(`profile/photo`, formData)
-    },
+  getProfileUser(userId) {
+    return instance.get(`profile/${userId}`)
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/${userId}`)
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status })
+  },
+  savePhoto(photo) {
+    const formData = new FormData()
+    formData.append('image', photo)
+    return instance.put(`profile/photo`, formData)
+  },
+  saveProfile(profile) {
+    return instance.put(`profile`, profile)
+  },
 }
 
 export const authAPI = {
-    me() {
-        return instance.get(`auth/me`)
-    },
-    login(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, { email, password, rememberMe })
-    },
-    logout() {
-        return instance.delete(`auth/login`)
-    },
+  me() {
+    return instance.get(`auth/me`)
+  },
+  login(email, password, rememberMe = false) {
+    return instance.post(`auth/login`, { email, password, rememberMe })
+  },
+  logout() {
+    return instance.delete(`auth/login`)
+  },
 }

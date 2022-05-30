@@ -1,36 +1,35 @@
 // == Base:
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react'
+import { connect } from 'react-redux'
 import {
   getProfileUsersThunk,
   getStatus,
   updateStatus,
   savePhoto,
-} from "../../../redux/reducers/profile-reducer";
-import { withRouter } from "react-router-dom";
-import { compose } from "redux";
+  saveProfile,
+} from '../../../redux/reducers/profile-reducer'
+import { withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 // == Styles:
-import "./Profile.scss";
+import './Profile.scss'
 // == Components:
-import Profile from "./Profile";
+import Profile from './Profile'
 
 class ProfileContainer extends React.Component {
-  // 23541 1034
-
   updateProfile() {
-    let userId = this.props.match.params.userId;
+    let userId = this.props.match.params.userId
     if (!userId) {
-      userId = this.props.authorizedUserId;
+      userId = this.props.authorizedUserId
       if (!userId) {
-        this.props.history.push("/login");
+        this.props.history.push('/login')
       }
     }
-    this.props.getProfileUsersThunk(userId);
-    this.props.getStatus(userId);
+    this.props.getProfileUsersThunk(userId)
+    this.props.getStatus(userId)
   }
 
   componentDidMount() {
-    this.updateProfile();
+    this.updateProfile()
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -42,14 +41,14 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <Profile
-        {...this.props}
         isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateStatus}
         savePhoto={this.props.savePhoto}
+        saveProfile={this.props.saveProfile}
       />
-    );
+    )
   }
 }
 
@@ -59,8 +58,8 @@ const mapStateToProps = (state) => {
     status: state.ProfilePage.status,
     authorizedUserId: state.Auth.id,
     isAuth: state.Auth.isAuth,
-  };
-};
+  }
+}
 
 export default compose(
   connect(mapStateToProps, {
@@ -68,6 +67,7 @@ export default compose(
     getStatus,
     updateStatus,
     savePhoto,
+    saveProfile,
   }),
   withRouter
-)(ProfileContainer);
+)(ProfileContainer)
