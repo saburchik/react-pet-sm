@@ -1,11 +1,11 @@
 // == Base:
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { initializeApp } from './redux/reducers/app-reducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { HashRouter } from "react-router-dom"
+import { HashRouter } from 'react-router-dom'
 import store from './redux/redux-store'
 import { Provider } from 'react-redux'
 // == Styles:
@@ -18,10 +18,15 @@ import Footer from './components/Footer/Footer'
 import Preloader from './components/common/Preloader'
 import { withSuspense } from './hoc/withSuspense'
 
-const DialogsContainer = React.lazy(() => import('./components/Main/Dialogs/DialogsContainer'))
-const UsersContainer = React.lazy(() => import('./components/Main/Users/UsersContainer'))
-const ProfileContainer = React.lazy(() => import('./components/Main/Profile/ProfileContainer'))
-
+const DialogsContainer = React.lazy(() =>
+  import('./components/Main/Dialogs/DialogsContainer')
+)
+const UsersContainer = React.lazy(() =>
+  import('./components/Main/Users/UsersContainer')
+)
+const ProfileContainer = React.lazy(() =>
+  import('./components/Main/Profile/ProfileContainer')
+)
 
 class App extends React.Component {
   componentDidMount() {
@@ -34,26 +39,33 @@ class App extends React.Component {
     }
 
     return (
-      <div className="app">
+      <div className='app'>
         <HeaderContainer />
         <SidebarContainer />
         <main className='app__main'>
           <Switch>
-            <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
-            <Route path='/dialogs' exact render={withSuspense(DialogsContainer)} />
+            <Route
+              path='/profile/:userId?'
+              render={withSuspense(ProfileContainer)}
+            />
+            <Route
+              path='/dialogs'
+              exact
+              render={withSuspense(DialogsContainer)}
+            />
             <Route path='/users' exact render={withSuspense(UsersContainer)} />
             <Route path='/login' exact render={() => <Login />} />
           </Switch>
         </main>
         <Footer />
-      </div >
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    initialized: state.App.initialized
+    initialized: state.App.initialized,
   }
 }
 
@@ -64,11 +76,11 @@ const AppContainer = compose(
 
 const MainApp = () => {
   return (
-    <Provider store={store} >
-      <HashRouter >
+    <Provider store={store}>
+      <HashRouter>
         <AppContainer />
       </HashRouter>
-    </Provider >
+    </Provider>
   )
 }
 

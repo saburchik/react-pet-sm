@@ -14,7 +14,7 @@ function ProfileDataForm({
   return (
     <form className='personal__info' onSubmit={handleSubmit}>
       <button>Save</button>
-      <strong>{error}</strong>
+      {error && <div className='login__error'>{error}</div>}
       <h3 className='title-h3'>
         <b>{profile.fullName}</b>
         <Field placeholder='Full Name' name='fullName' component={Input} />
@@ -56,7 +56,11 @@ function ProfileDataForm({
             return (
               <div key={key}>
                 <b>{key}</b>
-                <Field name={`contacts.${key}`} component={Input} />
+                <Field
+                  name={`contacts.${key}`}
+                  component={Input}
+                  placeholder={key}
+                />
               </div>
             )
           })}

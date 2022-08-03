@@ -93,17 +93,19 @@ const ProfileData = ({
   return (
     <article className='personal__info'>
       {isOwner && <button onClick={onEditMode}>edit</button>}
-      <h3 className='title-h3'>{profile.fullName}</h3>
+      <h3 className='title-h3'>Full name: {profile.fullName}</h3>
       <ul>
         <li>
           Ищу работу:
           <b>{profile.lookingForAJob === true ? 'Да' : 'Не ищу'}</b>
         </li>
-        {profile.lookingForAJob && (
+        {profile.lookingForAJob ? (
           <li>
             Описание желаемой работы:
             <b>{profile.lookingForAJobDescription}</b>
           </li>
+        ) : (
+          (profile.lookingForAJobDescription = '')
         )}
         <li>
           About Me:
