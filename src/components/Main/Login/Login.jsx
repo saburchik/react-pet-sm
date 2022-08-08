@@ -18,7 +18,7 @@ const Login = ({ login, isAuth, captchaUrl }) => {
       formData.email,
       formData.password,
       formData.rememberMe,
-      formData.captchaUrl
+      formData.captcha
     )
   }
 

@@ -1,13 +1,17 @@
 // == Base:
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { initializeApp } from './redux/reducers/app-reducer'
+import {
+  Route,
+  Switch,
+  withRouter,
+  BrowserRouter,
+  Redirect,
+} from 'react-router-dom'
+import { connect, Provider } from 'react-redux'
 import { compose } from 'redux'
-import { withRouter } from 'react-router-dom'
-import { HashRouter } from 'react-router-dom'
 import store from './redux/redux-store'
-import { Provider } from 'react-redux'
+import { initializeApp } from './redux/reducers/app-reducer'
+import { withSuspense } from './hoc/withSuspense'
 // == Styles:
 import './App.scss'
 // == Components:
@@ -16,7 +20,6 @@ import SidebarContainer from './components/Sidebar/SidebarContainer'
 import Login from './components/Main/Login/Login'
 import Footer from './components/Footer/Footer'
 import Preloader from './components/common/Preloader'
-import { withSuspense } from './hoc/withSuspense'
 
 const DialogsContainer = React.lazy(() =>
   import('./components/Main/Dialogs/DialogsContainer')
@@ -29,8 +32,19 @@ const ProfileContainer = React.lazy(() =>
 )
 
 class App extends React.Component {
+  catchAllUnhandleErrors(reason, promise) {
+    if (promise) return alert('Some error occered')
+    //console.error(promiseRejectionEvent)
+  }
   componentDidMount() {
     this.props.initializeApp()
+    window.addEventListener('unhandledrejection', this.catchAllUnhandleErrors())
+  }
+  componentWillUnmount() {
+    window.removeEventListener(
+      'unhandledrejection',
+      this.catchAllUnhandleErrors()
+    )
   }
 
   render() {
@@ -44,6 +58,7 @@ class App extends React.Component {
         <SidebarContainer />
         <main className='app__main'>
           <Switch>
+            <Route exact path='/' render={() => <Redirect to='/profile' />} />
             <Route
               path='/profile/:userId?'
               render={withSuspense(ProfileContainer)}
@@ -53,6 +68,7 @@ class App extends React.Component {
               exact
               render={withSuspense(DialogsContainer)}
             />
+            <Route path='*' render={() => <div>404 Not Found</div>} />
             <Route path='/users' exact render={withSuspense(UsersContainer)} />
             <Route path='/login' exact render={() => <Login />} />
           </Switch>
@@ -76,11 +92,11 @@ const AppContainer = compose(
 
 const MainApp = () => {
   return (
-    <Provider store={store}>
-      <HashRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <AppContainer />
-      </HashRouter>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   )
 }
 

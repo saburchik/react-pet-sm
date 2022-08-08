@@ -1,5 +1,5 @@
 // == Base:
-import React from 'react'
+import { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   getProfileUsersThunk,
@@ -15,7 +15,17 @@ import './Profile.scss'
 // == Components:
 import Profile from './Profile'
 
-class ProfileContainer extends React.Component {
+class ProfileContainer extends Component {
+  componentDidMount() {
+    this.updateProfile()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.updateProfile()
+    }
+  }
+
   updateProfile() {
     let userId = this.props.match.params.userId
     if (!userId) {
@@ -26,16 +36,6 @@ class ProfileContainer extends React.Component {
     }
     this.props.getProfileUsersThunk(userId)
     this.props.getStatus(userId)
-  }
-
-  componentDidMount() {
-    this.updateProfile()
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.match.params.userId !== prevProps.match.params.userId) {
-      this.updateProfile()
-    }
   }
 
   render() {

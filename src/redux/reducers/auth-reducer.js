@@ -45,9 +45,9 @@ export const setAuth = () => {
   }
 }
 
-export const login = (email, password, rememberMe, captcha) => {
-  return async (dispatch) => {
-    let res = await authAPI.login(email, password, rememberMe, captcha)
+export const login =
+  (email, password, rememberMe, captcha) => async (dispatch) => {
+    const res = await authAPI.login(email, password, rememberMe, captcha)
     if (res.data.resultCode === 0) {
       dispatch(setAuth())
     } else {
@@ -59,7 +59,6 @@ export const login = (email, password, rememberMe, captcha) => {
       dispatch(stopSubmit('login', { _error: messageError }))
     }
   }
-}
 
 export const logout = () => {
   return async (dispatch) => {
